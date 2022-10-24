@@ -142,7 +142,6 @@ public class Project04 {
            for (int i = 0; i < z.length(); i++) {
                if (z.charAt(i) == 'a' || z.charAt(i) == 'A')
                    countA++;
-
            }
 
            System.out.println("This sentence has " + countA + " a or A letters.");
