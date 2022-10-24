@@ -61,16 +61,7 @@ public class Project04 {
         else System.out.println("Invalid input");
 
         System.out.println("\n-----------Task6---------\n");
-         /*
-                 TASK-6
-        Write a program that asks user to enter their full address.
-        Replace all letter ‘a’ or ‘A’ with ‘*’
-        Replace all letter ‘e’ or ‘E’ with ‘#’
-        Replace all letter ‘i’ or ‘I’ with ‘+’
-        Replace all letter ‘u’ or ‘U’ with ‘$’
-        Replace all letter ‘o’ or ‘O’ with ‘@’
-        Then, print result after replacements
-          */
+
         String address = ScannerHelper.getAnAddress();
 
         address = address.replace('a', '*').replace('A', '*').
@@ -78,19 +69,10 @@ public class Project04 {
                 replace('i', '+').replace('I', '+').
                 replace('u', '$').replace('U', '$').
                 replace('o', '@').replace('O', '@');
+
         System.out.println(address);
 
         System.out.println("\n-----------Task7---------\n");
-        /*
-                TASK-7
-        Write a program that generates 2 random numbers between 0 and 25 (0 and 25 are included), Then print all numbers between 2 random numbers that cannot be divided by 5 in ascending order.
-
-        Test data:
-        int randomNumber1 = 12;
-        int randomNumber1 = 4;
-        Expected output:
-        4 – 6 – 7 – 8 – 9 – 11 – 12
-         */
 
         int random1 = RandomNumberGenerator.getARandomNumber(0, 25);
         int random2 = RandomNumberGenerator.getARandomNumber(0, 25);
@@ -105,57 +87,66 @@ public class Project04 {
         System.out.println(result.substring(0, result.length() - 3));
 
         System.out.println("\n-----------Task8---------\n");
-                    /*
-                    TASK-8
-            Write a program that asks user to enter a sentence as a String, and count how many words that sentence has, and print it with given below message.
-            NOTE: Write a program that handles any String
-            NOTE: First check if the given sentence has 2 words at least. If not, then just print “This sentence does not have multiple words”.
-
-            Test data 1:
-            Java is fun
-
-            Expected output 1:
-            This sentence has 3 words.
 
 
-            Test data 2:
-            Hello World
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Please enter a sentence");
+        String sen = scan.nextLine();
 
-            Expected output 2:
-            This sentence has 2 words.
+        if (sen.contains(" ")) {
+            int space = 1;
+            for (int i = 0; i < sen.length(); i++) {
+                char c = sen.charAt(i);
+                if (Character.isWhitespace(c)) {
+                    space++;
+                }
+            }
+            System.out.println("This sentence has " + space + " words.");
+        } else {
+            System.out.println("This sentence does not have multiple words");
+        }
 
 
-            Test data 3:
-            Hi
+        System.out.println("\n-----------Task9--------\n");
 
-            Expected output 3:
-            This sentence does not have multiple words.
+        int r = ScannerHelper.getANumber();
 
+        for (int i = 1; i <= r; i++) {
+            if (i % 6 == 0) System.out.println("FooBar");
+            else if (i % 2 == 0) System.out.println("Foo");
+            else if (i % 3 == 0) System.out.println("Bar");
+            else System.out.println(i);
+        }
 
-                     */
-        int space = 0;
-
-        String s = ScannerHelper.getAString();
 
         System.out.println("\n-----------Task10--------\n");
-        String rev ="";
-        String c = "";
-        ScannerHelper.getAString();
+        String rev = "";
+        String x = ScannerHelper.getAString();
 
-        if(c.length() == 0) System.out.println("This word does not have 1 or more characters");
+        if (x.length() == 0){System.out.println("This word does not have 1 or more characters");
+        }else {
+            for (int i = x.length() - 1; i >= 0; i--) {
+                rev += x.charAt(i); //reverse String
+            }
 
-        for (int i = c.length() -1; i >= 0 ; i--) {
-            rev += c.charAt(i); //reverse String
+            if (x.equals(rev)) System.out.println("This word is palindrome");
+            else System.out.println("This word is not palindrome");
         }
-        if(c.equals(rev)) System.out.println("This word is palindrome");
-        else System.out.println("This word is not palindrome");
 
-        System.out.println("\n-----------Task11--------\n");
+                System.out.println("\n-----------Task11--------\n");
 
+        int countA = 0;
+        String z = ScannerHelper.getAString();
+       if(z.length()==0){System.out.println("This sentence does not have any characters.");
+       }else {
+           for (int i = 0; i < z.length(); i++) {
+               if (z.charAt(i) == 'a' || z.charAt(i) == 'A')
+                   countA++;
 
+           }
 
-
+           System.out.println("This sentence has " + countA + " a or A letters.");
+       }
 
     }
-
 }
