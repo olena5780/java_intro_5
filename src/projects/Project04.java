@@ -147,6 +147,5 @@ public class Project04 {
            System.out.println("This sentence has " + countA + " a or A letters.");
        }
 
-
     }
 }
