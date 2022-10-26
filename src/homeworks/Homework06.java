@@ -50,22 +50,6 @@ public class Homework06 {
         }
         System.out.println(false);
 
-        /*
-                Requirement:
-        -Create a String array that stores cartoon cats below
-        Garfield, Tom, Sylvester, Azrael
-
-        THEN:
-        -Print the entire array sorted lexicographically
-        -Then, check if it contains Garfield and Felix
-            if it contains both, then print true
-            if it does not contain both, print false
-
-        Expected Result:
-        [Azrael, Garfield, Sylvester, Tom]
-        false
-                 */
-
         System.out.println("\n------Task6------\n");
 
         String[] cats = {"Garfield", "Tom", "Sylvester", "Azrael"};
@@ -106,8 +90,7 @@ public class Homework06 {
                 if (Character.isLowerCase(element)) lowerC++;
                 else upperC++;
                 letter++;
-            }
-            else if (Character.isDigit(element)) digit++;
+            } else if (Character.isDigit(element)) digit++;
             else special++;
 
         }
@@ -115,31 +98,72 @@ public class Homework06 {
         System.out.println("Uppercase letters = " + upperC);
         System.out.println("Lowercase letters = " + lowerC);
         System.out.println("Digits = " + digit);
-        System.out.println ("Special characters = " + special);
+        System.out.println("Special characters = " + special);
 
 
         System.out.println("\n------Task9------\n");
         String[] objects = {"Pen", "notebook", "Book", "paper", "bag", "pencil", "Ruler"};
+
         System.out.println(Arrays.toString(objects));
-        int lowerCase = 0;
-        int upperCase = 0;
-        int wordsBandP = 0;
+
+        int countUpCase = 0;
+        int countLowCase = 0;
+        int countBOrP = 0;
+        int countBookOrPen = 0;
 
         for (String object : objects) {
-            for (char character : object.toCharArray()) {
-                if(Character.isLetter(character)) {
-                    if (Character.isLowerCase(character)) lowerCase++;
-                    else upperCase++;
-                }else if(Character.isUpperCase('B') || Character.isUpperCase('P')) wordsBandP++;
-
-
-
+            if (Character.isUpperCase(object.charAt(0))) {
+                countUpCase++;
+            } else if (Character.isLowerCase(object.charAt(0))) {
+                countLowCase++;
             }
-            System.out.println("Elements starts with uppercase = " + upperCase);
-            System.out.println("Elements starts with lowercase = " + lowerCase);
-            System.out.println("Elements starts with B and P = " + wordsBandP);
-            System.out.println("Elements having \"book\" or \"pen\"= " );
+            if ((object.toUpperCase().charAt(0) == 'B') || (object.toUpperCase().charAt(0) == 'P')) {
+                countBOrP++;
+            }
+            if (object.toLowerCase().contains("book") || object.toLowerCase().contains("pen")) {
+                countBookOrPen++;
+            }
+        }
+
+        System.out.println("Elements starts with uppercase = " + countUpCase);
+        System.out.println("Elements starts with lowercase = " + countLowCase);
+        System.out.println("Elements starting with B or P = " + countBOrP);
+        System.out.println("Elements having \"book\" or \"pen\" = " + countBookOrPen);
+
+
+        System.out.println("\n------Task10------\n");
+
+        int[] n = {3, 5, 7, 10, 0, 20, 17, 10, 23, 56, 78};
+
+        int more10 = 0;
+        int less10 = 0;
+        int ten = 0;
+        System.out.println(Arrays.toString(n));
+
+        for (int i : n) {
+            if (i > 10) more10++;
+            else if (i < 10) less10++;
+            else ten++;
 
         }
+        System.out.println("Elements that are more than 10 = " + more10);
+        System.out.println("Elements that are less than 10 = " + less10);
+        System.out.println("Elements that are 10 = " + ten);
+
+        System.out.println("\n------Task11------\n");
+
+        int[] first = {5, 8, 13, 1, 2};
+        int[] second = {9, 3, 67, 1, 0};
+        int[] third = new int[5];
+
+        System.out.println(Arrays.toString(first));
+        System.out.println(Arrays.toString(second));
+
+        for (int i = 0; i < third.length; i++) {
+            third[i] = Math.max(first[i], second[i]);
+
+        }
+        System.out.println(Arrays.toString(third));
+
     }
 }
