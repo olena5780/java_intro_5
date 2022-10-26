@@ -120,9 +120,9 @@ public class Project04 {
 
 
         System.out.println("\n-----------Task10--------\n");
-        String rev = "";
-        String x = ScannerHelper.getAString();
 
+        String x = ScannerHelper.getAString();
+        String rev = "";
         if (x.length() == 0){System.out.println("This word does not have 1 or more characters");
         }else {
             for (int i = x.length() - 1; i >= 0; i--) {
@@ -137,7 +137,7 @@ public class Project04 {
 
         int countA = 0;
         String z = ScannerHelper.getAString();
-       if(z.length()==0){System.out.println("This sentence does not have any characters.");
+       if(z.length() == 0){System.out.println("This sentence does not have any characters.");
        }else {
            for (int i = 0; i < z.length(); i++) {
                if (z.charAt(i) == 'a' || z.charAt(i) == 'A')

@@ -7,9 +7,6 @@ public class Homework06 {
         System.out.println("\n------Task1------\n");
         int[] numbers = {89, 0, 23, 0, 12, 0, 15, 34, 0, 7};
 
-        //int[] numbers = new numbers[3]
-        //int[] numbers = new numbers[0]
-        //int[] numbers = new numbers[9]
         System.out.println(numbers[3]);
         System.out.println(numbers[0]);
         System.out.println(numbers[9]);
@@ -45,7 +42,7 @@ public class Homework06 {
 
         boolean hasPluto = false;
         for (String dog : dogs) {
-            if(dog.equals("Pluto")) {
+            if (dog.equals("Pluto")) {
                 hasPluto = true;
                 break;
             }
@@ -76,8 +73,9 @@ public class Homework06 {
         System.out.println(Arrays.toString(cats));
 
         for (String cat : cats) {
-            if(cats.equals("Garfield") && cats.equals("Felix")){
-            System.out.println(true);}
+            if (cats.equals("Garfield") && cats.equals("Felix")) {
+                System.out.println(true);
+            }
             break;
         }
 
@@ -88,37 +86,14 @@ public class Homework06 {
         double[] numS = {10.5, 20.75, 70, 80, 15.75};
         System.out.println(Arrays.toString(numS));
 
-        for(double num1 : numS){
+        for (double num1 : numS) {
             System.out.println(num1);
         }
 
         System.out.println("\n------Task8------\n");
-        /*
-                Requirement:
-        -Create a char array that stores characters below
-        A, b, G, H, 7, 5, &, *, e, @, 4
-
-        THEN:
-        -Print the entire array
-        -Print the total count of the letters
-        -Print the total count of lowercase letters
-        -Print the total count of uppercase letters
-        -Print the total count of digits
-        -Print the total count of special characters
-
-        Expected Result:
-        [A, b, G, H, 7, 5, &, *, e, @, 4]
-        Letters = 5
-        Uppercase letters = 3
-        Lowercase letters = 2
-        Digits = 3
-        Special characters = 3
-
-         */
 
         char[] characters = {'A', 'b', 'G', 'H', '7', '5', '&', '*', 'e', '@', '4'};
 
-        int total = 0;
         int letter = 0;
         int lowerC = 0;
         int upperC = 0;
@@ -126,14 +101,45 @@ public class Homework06 {
         int special = 0;
 
         System.out.println(Arrays.toString(characters));
+        for (char element : characters) {
+            if (Character.isLetter(element)) {
+                if (Character.isLowerCase(element)) lowerC++;
+                else upperC++;
+                letter++;
+            }
+            else if (Character.isDigit(element)) digit++;
+            else special++;
+
+        }
+        System.out.println("Letters = " + letter);
+        System.out.println("Uppercase letters = " + upperC);
+        System.out.println("Lowercase letters = " + lowerC);
+        System.out.println("Digits = " + digit);
+        System.out.println ("Special characters = " + special);
+
+
+        System.out.println("\n------Task9------\n");
+        String[] objects = {"Pen", "notebook", "Book", "paper", "bag", "pencil", "Ruler"};
+        System.out.println(Arrays.toString(objects));
+        int lowerCase = 0;
+        int upperCase = 0;
+        int wordsBandP = 0;
+
+        for (String object : objects) {
+            for (char character : object.toCharArray()) {
+                if(Character.isLetter(character)) {
+                    if (Character.isLowerCase(character)) lowerCase++;
+                    else upperCase++;
+                }else if(Character.isUpperCase('B') || Character.isUpperCase('P')) wordsBandP++;
 
 
 
+            }
+            System.out.println("Elements starts with uppercase = " + upperCase);
+            System.out.println("Elements starts with lowercase = " + lowerCase);
+            System.out.println("Elements starts with B and P = " + wordsBandP);
+            System.out.println("Elements having \"book\" or \"pen\"= " );
 
-
-
-
-
-
+        }
     }
 }
