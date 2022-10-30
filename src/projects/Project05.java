@@ -152,13 +152,11 @@ public class Project05 {
                 countRepeat = count;
                 check = strings[i];
             }
+            count = 0;
         }
         System.out.println(check);
 
     }
-
-
-
 }
 
 
