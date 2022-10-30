@@ -22,7 +22,7 @@ public class Project05 {
         findSecondGreatestAndSmallest(elements);
 
         System.out.println("\n==================Task5==================\n");
-        String[] strings = {"foo", "bar", "Foo", "6", "abc", "6", "xyz"};
+        String[] strings = {"foo", "bar", "Foo", "bar", "6", "abc", "6", "xyz"};
         findDuplicatedElementsInAnArray(strings);
 
         System.out.println("\n==================Task6==================\n");
@@ -30,14 +30,14 @@ public class Project05 {
         findMostRepeatedElementInAnArray(objects);
 
     }
-
+    //System.out.println("\n==================Task1==================\n");
     public static void findGreatestAndSmallestWithSort(int[] numbers ){
         Arrays.sort(numbers);
         System.out.println("Smallest = " + numbers[0]);
         System.out.println("Greatest = " + numbers[numbers.length-1]);
     }
-
-    public static void  findGreatestAndSmallest(int[] numbers) {
+    //System.out.println("\n==================Task2==================\n");
+    public static void findGreatestAndSmallest(int[] numbers) {
 
         int min = Integer.MAX_VALUE;
         int max = Integer.MIN_VALUE;
@@ -50,18 +50,8 @@ public class Project05 {
         System.out.println("Smallest = " + min);
         System.out.println("Greatest = " + max);
     }
-        /*
-        TASK-3 - findSecondGreatestAndSmallestWithSort() method
-Write a method that takes an int array that has at least one element. Find the second greatest and second smallest elements from the array and print them. Complete task using sort() method.
 
-Test data:
-[10, 5, 6, 7, 8, 5, 15, 15]
-
-Expected output:
-Second Smallest = 6
-Second Greatest = 10
-         */
-
+    //System.out.println("\n==================Find Min and Max(for Task3 & Task4)==================\n");
             public static int findMin (int[] elements) {
                 int min = Integer.MAX_VALUE;
                 for (int element : elements) {
@@ -79,23 +69,26 @@ Second Greatest = 10
 
                 return max;
             }
-
+    //System.out.println("\n==================Task3==================\n");
     public static void findSecondGreatestAndSmallestWithSort(int[] elements){
+                Arrays.sort(elements);
+        int secondMin = Integer.MAX_VALUE;
+        int secondMax = Integer.MIN_VALUE;
+
+
+        for (int element : elements) {
+            if (element < secondMin && element > findMin(elements)){
+                secondMin = element;}
+            if (element > secondMax && element < findMax(elements)){
+                secondMax = element;}
+        }
+        System.out.println("Second Smallest = " + secondMin);
+        System.out.println("Second Greatest = " + secondMax);
+
 
     }
 
-    /*
-            TASK-4 - findSecondGreatestAndSmallest() method
-        Write a method that takes an int array that has at least one element. Find the second greatest and second smallest elements from the array and print them. DO NOT sort the array and complete task without sorting.
-
-        Test data:
-        [10, 5, 6, 7, 8, 5, 15, 15]
-
-        Expected output:
-        Second Smallest = 6
-        Second Greatest = 10
-     */
-
+    //System.out.println("\n==================Task4==================\n");
     public static void findSecondGreatestAndSmallest(int[] elements){
 
         int secondMin = Integer.MAX_VALUE;
@@ -109,8 +102,8 @@ Second Greatest = 10
             if (number > secondMax && number < findMax(elements))
                 secondMax = number;
         }
-        System.out.println("Smallest = " + secondMin);
-        System.out.println("Greatest = " + secondMax);
+        System.out.println("Second Smallest = " + secondMin);
+        System.out.println("Greatest Greatest = " + secondMax);
     }
 
     /*
@@ -125,21 +118,42 @@ Second Greatest = 10
     bar
     6
      */
+    //System.out.println("\n==================Task5==================\n");
     public static void findDuplicatedElementsInAnArray(String[] strings){
+        String dup = "";
+
+        for (int i = 0; i < strings.length; i++) {
+            for (int j = i + 1; j < strings.length; j++) {
+                // if we already checked break it
+                if (dup.contains(strings[i])) break;
+
+                // if we didn't check it add it in dup container
+                if (strings[i].equals(strings[j])) {
+                    dup = strings[i];
+                    System.out.println(strings[i]);
+                }
+            }
+        }
+
 
     }
-    /*
-    TASK-6 findMostRepeatedElementInAnArray() method
-Write a method that takes a String array. Find the most repeated element and print it.
 
-Test data:
-[“pen”, “eraser”, “pencil”, “pen”, “123”, “abc”, “pen”, “eraser”]
 
-Expected output:
-pen
-     */
-
+    //System.out.println("\n==================Task6==================\n");
     public static void findMostRepeatedElementInAnArray(String[] strings){
+        String check = "";
+        int count = 0;
+        int countRepeat= 0;
+        for (int i = 0; i < strings.length; i++) {
+            for (int j = i + 1; j < strings.length ; j++) {
+                if(strings[i].equals(strings[j])) count++;
+            }
+            if(count > countRepeat){
+                countRepeat = count;
+                check = strings[i];
+            }
+        }
+        System.out.println(check);
 
     }
 
