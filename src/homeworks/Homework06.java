@@ -1,5 +1,6 @@
 package homeworks;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Homework06 {
@@ -161,9 +162,11 @@ public class Homework06 {
 
         for (int i = 0; i < third.length; i++) {
             third[i] = Math.max(first[i], second[i]);
-
         }
         System.out.println(Arrays.toString(third));
+
+        String[] names = {"Mila", "Liam", "Olena", "Ljupcho"};
+
 
     }
 }
