@@ -14,7 +14,7 @@ public class _11_startsWith_endsWith_Methods {
         System.out.println(s.startsWith("T")); //true
         System.out.println(s.startsWith("t")); //false
         System.out.println(s.startsWith("Tech")); //true
-        System.out.println(s.startsWith("Global")); //true
+        System.out.println(s.endsWith("Global")); //true
 
         String city = "Chicago";
         System.out.println(city.startsWith(city)); // true
