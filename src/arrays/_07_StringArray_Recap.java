@@ -7,7 +7,7 @@ public class _07_StringArray_Recap {
 
         // create String array with length
         //Assign "Apple" to index of 0
-        //Assign "Apple" to index of 3
+        //Assign "Kiwi" to index of 3
         //Print
 
         String[] fruits = new String[4];

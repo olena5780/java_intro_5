@@ -18,7 +18,6 @@ public class _03_equals_Method{
 
         System.out.println(b1); // false
 
-
         System.out.println(s2.equals(s3)); // false
         System.out.println(s1.equals(s3)); // false
         System.out.println(s1.equalsIgnoreCase(s3)); // true

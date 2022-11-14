@@ -106,18 +106,7 @@ public class Project05 {
         System.out.println("Greatest Greatest = " + secondMax);
     }
 
-    /*
-        TASK-5 - findDuplicatedElementsInAnArray() method
-    Write a method that takes a String array. Find all duplicated elements and print them.
-    NOTE: It is case-sensitive!
 
-    Test data:
-    [“foo”, “bar”, “Foo”, “bar”, “6”, “abc”, “6”, “xyz”]
-
-    Expected output:
-    bar
-    6
-     */
     //System.out.println("\n==================Task5==================\n");
     public static void findDuplicatedElementsInAnArray(String[] strings){
         String dup = "";

@@ -94,14 +94,14 @@ public class Project04 {
         String sen = scan.nextLine();
 
         if (sen.contains(" ")) {
-            int space = 1;
+            int space = 0;
             for (int i = 0; i < sen.length(); i++) {
                 char c = sen.charAt(i);
                 if (Character.isWhitespace(c)) {
                     space++;
                 }
             }
-            System.out.println("This sentence has " + space + " words.");
+            System.out.println("This sentence has " + space + 1 + " words."); // plus 1 because the sentence already has a space
         } else {
             System.out.println("This sentence does not have multiple words");
         }
@@ -133,14 +133,14 @@ public class Project04 {
             else System.out.println("This word is not palindrome");
         }
 
-                System.out.println("\n-----------Task11--------\n");
-
         int countA = 0;
         String z = ScannerHelper.getAString();
-       if(z.length() == 0){System.out.println("This sentence does not have any characters.");
-       }else {
-           for (int i = 0; i < z.length(); i++) {
-               if (z.charAt(i) == 'a' || z.charAt(i) == 'A')
+        if(z.length() == 0){System.out.println("This sentence does not have any characters.");
+        }else {
+            for (int i = 0; i < z.length(); i++) {
+                if (z.charAt(i) == 'a' || z.charAt(i) == 'A')
+
+                System.out.println("\n-----------Task11--------\n");
                    countA++;
            }
 

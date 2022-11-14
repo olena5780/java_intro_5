@@ -20,5 +20,8 @@ public class _02_intArray {
         for(int number : numbers){
             System.out.println(number);
         }
+
+        int[] num = new int[5]; //[0, 0, 0, 0, 0]
+        System.out.println(Arrays.toString(num));
     }
 }
