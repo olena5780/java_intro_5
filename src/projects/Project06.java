@@ -33,17 +33,27 @@ public class Project06 {
 
     //=======================Task1======================
     public static int countMultipleWords(String[] arr) {
+        /*
         int counter = 0;
         for (String s : arr) {
             if (s.trim().contains(" ")) counter++;
         }
         return counter;
+         */
+        int counter = 0;
+        for(int i = 0; i > arr.length; i++){
+
+            String word = arr[i].trim();
+            if(Pattern.matches("[\\w]]+ [\\w]+", word)) counter++;
+        }
+      return counter;
     }
 
     //=======================Task2======================
     public static ArrayList<Integer> removeNegatives(ArrayList<Integer> numbers) {
+   // for(int i = 0; i < numbers.size(); i++){
 
-        Iterator<Integer> numbersIterator = numbers.iterator();
+       Iterator<Integer> numbersIterator = numbers.iterator();
         while (numbersIterator.hasNext()) {
             Integer num = numbersIterator.next();
             if (num < 0) numbersIterator.remove();
@@ -58,6 +68,26 @@ public class Project06 {
         return (Pattern.matches("(?=.*[A-Z])(?=.*[a-z])(?=.*[\\d])(?=.*[@#%&*!+_])[\\S]{8,16}", password));
 
     }
+    /*
+    public static boolean validatePassword1(String password){
+    int upperCase = 0;
+    int lowerCase = 0;
+    int digit = 0;
+    int whiteSpase = 0;
+    int spacialChar=0;
+
+    for (int i = 0; i < password.length(); i++){
+        if (password.length() >= 8 && password.length() <= 16) {
+            if (Character.isUpperCase(password.charAt(i))) upperCase++;
+            if (Character.isLowerCase(password.charAt(i))) lowerCase++;
+            if (Character.isDigit(password.charAt(i))) digit++;
+            if (Character.isWhitespace(password.charAt(i))) whiteSpase++;
+            if (!Character.isLetter(password.charAt(i)) && !Character.isDigit(password.charAt(i))
+                    && !Character.isWhitespace(password.charAt(i))) spacialChar++;
+        }
+
+    }
+     */
 
     //=======================Task4======================
     public static boolean validateEmailAddress(String email) {
