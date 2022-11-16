@@ -22,13 +22,17 @@ public class Homework08 {
         System.out.println(removeExtraSpaces(s));
 
         System.out.println("\n-----------------------Task4------------------\n");
-        String x = "Hi, my name is John Doe";
-       // System.out.println(count3OrLess(x));
+        String str4 = "Hi, my name is John Doe";
+        System.out.println(count3OrLess(str4));
 
         System.out.println("\n-----------------------Task5------------------\n");
+        String dateOfBirth = "01/19/1988";
+        System.out.println(isDateFormatValid(dateOfBirth));
+
         System.out.println("\n-----------------------Task6------------------\n");
-        System.out.println("\n-----------------------Task7------------------\n");
-        System.out.println("\n-----------------------Task8------------------\n");
+        String email = "abc@student.techglobal.com";
+        System.out.println(validateEmailAddress(email));
+
     }
 
     // System.out.println("\n-----------------------Task1------------------\n");
@@ -58,37 +62,26 @@ public class Homework08 {
        return removeExtraSpaces;
     }
 
-    /*
-    Requirement:
-Write a method named count3OrLess() that asks the user to enter a sentence. Return a count of how many words are 3 characters long or less.
-NOTE: You must use regex
-
-Example program1:
-String str = “I go to TechGlobal”;
-Program: 3
-
-Example program2:
-String str = “Hi, my name is John Doe”;
-Program: 4
-
-Example program2:
-String str = “Hello guys”;
-Program: 0
-
-     */
-    /* System.out.println("\n-----------------------Task4------------------\n");
-    public static int count3OrLess(String x){
-        String sen = ScannerHelper.getAString();
-
-        Pattern pattern = Pattern.compile("[^A-Za-z0-9]{1,3}");
-        Matcher matcher = pattern.matcher(sen);
-        int count3OrLess = 0;
-
-
-
+    //System.out.println("\n-----------------------Task4------------------\n");
+    public static int count3OrLess(String str4){
+        String[] arr = str4.split("[A-Za-z]{4,}");
+        Pattern pattern = Pattern.compile("[A-Za-z]{1,3}");
+        Matcher matcher = pattern.matcher(Arrays.toString(arr));
+        int counter = 0;
+        while(matcher.find()){
+            counter++;
+        }
+        return counter;
+    }
+    //System.out.println("\n-----------------------Task5------------------\n");
+    public static boolean isDateFormatValid(String dateOfBirth) {
+      return Pattern.matches("[0-9]{2}/[0-9]{2}/[0-9]{4}", dateOfBirth );
 
     }
+    //System.out.println("\n-----------------------Task6------------------\n");
+    public static boolean validateEmailAddress(String email) {
 
-     */
+        return (Pattern.matches("[\\w]{2,}[@][\\w]{2,}\\.[.\\w]{2,}", email));
+    }
 
 }
