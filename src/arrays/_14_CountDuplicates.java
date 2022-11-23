@@ -20,7 +20,7 @@ public class _14_CountDuplicates {
 //            System.out.println();
 //        }
 
-        System.out.println( findHowManyDuplicates(numbers));
+        System.out.println(findHowManyDuplicates(numbers));
     }
 
     /*
