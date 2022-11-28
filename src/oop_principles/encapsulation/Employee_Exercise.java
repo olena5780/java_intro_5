@@ -2,7 +2,6 @@ package oop_principles.encapsulation;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 
 public class Employee_Exercise {
     public static void main(String[] args) {
@@ -75,44 +74,82 @@ public class Employee_Exercise {
          */
 
         int teslaEmployees = 0, usbankEmployees = 0, verizonEmployees = 0;
-        int testers = 0, developers = 0, managers = 0, designers = 0, systemArchitect = 0, scrumMasters = 0;
+        int totalTesters = 0, totalDevs = 0, totalSM = 0, totalManagers = 0, totalDesigners = 0, totalSA = 0;
 
+        Employee managerEmployee = null;
+        Employee systemArchitectEmployee = null;
+        Employee scrumMasterEmployee = null;
 
-        Employee managerEmployee = new Employee();
-        Employee systemArchitectEmployee = new Employee();
-        Employee scrumMasterEmployee = new Employee();
+        Employee youngestDev = new Employee(); // age = 0
+        Employee youngestTester = new Employee(); // age = 0
+        Employee youngestDesigner = new Employee(); // age = 0
+
+        youngestTester.setAge(Integer.MAX_VALUE);
+        youngestDesigner.setAge(Integer.MAX_VALUE);
+        youngestDev.setAge(Integer.MAX_VALUE);
 
         for (Employee employee : employees) {
             if(employee.getCompany().getName().equals("Tesla")) teslaEmployees++;
             else if(employee.getCompany().getName().equals("USBank")) usbankEmployees++;
             else verizonEmployees++;
 
-            if(employee.getJobPosition().equals("Tester")) testers++;
-            else if (employee.getJobPosition().equals("Developer")) developers++;
-            else if (employee.getJobPosition().equals("Designer")) designers++;
-            else if (employee.getJobPosition().equals("System Architect")) systemArchitect++;
-            else if (employee.getJobPosition().equals("Manager")) managers++;
-            else scrumMasters++;
-
-            if(employee.getJobPosition().equals("Manager")) managerEmployee = employee;
-            if(employee.getJobPosition().equals("System Architect")) systemArchitectEmployee = employee;
-            if(employee.getJobPosition().equals("Scrum Master")) scrumMasterEmployee = employee;
-
+            switch (employee.getJobPosition()) {
+                case "Tester":
+                    totalTesters++;
+                    if(employee.getAge() < youngestTester.getAge()) youngestTester = employee;
+                    break;
+                case "Developer":
+                    totalDevs++;
+                    if(employee.getAge() < youngestDev.getAge()) youngestDev = employee;
+                    break;
+                case "Scrum Master":
+                    totalSM++;
+                    scrumMasterEmployee = employee;
+                    break;
+                case "System Architect":
+                    totalSA++;
+                    systemArchitectEmployee = employee;
+                    break;
+                case "Designer":
+                    totalDesigners++;
+                    if(employee.getAge() < youngestDesigner.getAge()) youngestDesigner = employee;
+                    break;
+                case "Manager":
+                    totalManagers++;
+                    managerEmployee = employee;
+                    break;
+                default:
+                    System.out.println("The job is not matching with any case {" + employee.getJobPosition() + "}");
+            }
         }
 
-        System.out.println("\nEmployee numbers for each company\n");
+        System.out.println("Employee numbers for each company");
         System.out.println("Tesla = " + teslaEmployees);
         System.out.println("USBank = " + usbankEmployees);
         System.out.println("Verizon = " + verizonEmployees);
 
-        System.out.println("\nEmployee numbers for each position\n");
-        System.out.println("Tester = " + testers + "\n" + "Developer = " + developers + "\n" + "Manager = " + managers + "\n" +
-                "Designer = " + designers + "\n" +
-                "System Architect = " + systemArchitect + "\n" +
-                "Scrum Master = " + scrumMasters );
+        System.out.println("Employee numbers for each position");
+        System.out.println("Tester = " + totalTesters);
+        System.out.println("Developer = " + totalDevs);
+        System.out.println("Scrum Master = " + totalSM);
+        System.out.println("Designer = " + totalDesigners);
+        System.out.println("System Architect = " + totalSA);
+        System.out.println("Manager = " + totalManagers);
 
-        System.out.println("\n-----------Find youngest--------------\n");
 
+        System.out.println("Find the company");
+        System.out.println(scrumMasterEmployee.getJobPosition() + " = " + scrumMasterEmployee.getFullName() + " works at " + scrumMasterEmployee.getCompany().getName());
+        System.out.println(systemArchitectEmployee.getJobPosition() + " = " + systemArchitectEmployee.getFullName() + " works at " + systemArchitectEmployee.getCompany().getName());
+        System.out.println(managerEmployee.getJobPosition() + " = " + managerEmployee.getFullName() + " works at " + managerEmployee.getCompany().getName());
+
+
+        System.out.println("\n---------Youngest-------\n");
+        System.out.println("Youngest tester = " + youngestTester.getFullName() + " with the age of " + youngestTester.getAge());
+        System.out.println("Youngest developer = " + youngestDev.getFullName() + " with the age of " + youngestDev.getAge());
+        System.out.println("Youngest designer = " + youngestDesigner.getFullName() + " with the age of " + youngestDesigner.getAge());
+    }
+}
+       /*
         Employee youngestTester = employees.stream().filter(e -> e.getJobPosition().equals("Manager")).min (Comparator.comparingInt(Employee::getAge)).get();
         System.out.println("Youngest tester = " + youngestTester.getFullName() + " with the age of " + youngestTester.getAge());
 
@@ -122,14 +159,4 @@ public class Employee_Exercise {
         Employee youngestDesigner = employees.stream().filter(e -> e.getJobPosition().equals("Designer")).min (Comparator.comparingInt(Employee::getAge)).get();
         System.out.println("Youngest designer = " + youngestDesigner.getFullName() + " with the age of " + youngestDesigner.getAge());
 
-        System.out.println("\n-----------Find the company--------------\n");
-
-        System.out.println("Manager = " + managerEmployee.getFullName() + " works at " + managerEmployee.getCompany().getName() + "\n" +
-                "System Architect = " + systemArchitectEmployee.getFullName() + " works at " + systemArchitectEmployee.getCompany().getName() + "\n" +
-                "Scrum Master = " +  scrumMasterEmployee.getFullName() + " works at " + scrumMasterEmployee.getCompany().getName());
-
-
-
-
-    }
-}
+         */
