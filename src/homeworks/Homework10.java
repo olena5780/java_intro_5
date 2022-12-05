@@ -31,7 +31,7 @@ public class Homework10 {
         int[] arr2 = {6, 3, 2};
         System.out.println(Arrays.toString(add(arr1, arr2)));
         System.out.println("\n-------------------------Task8----------------------");
-        int[] num8 = {10, -13, 5, 70, 15, 57};
+        int[] num8 = {10, -13, 5, 70, 15, 57, 10, -5};
         System.out.println(findClosestTo10(num8));
 
 
@@ -45,6 +45,9 @@ Test data 2:
 String str = “Selenium is the most common UI automation tool.   ”;
 Expected output 2:
 8
+    if (str.replaceAll("[^a-zA-Z]", "").isEmpty()) return 0;
+        return str.trim().split("\\s+").length;
+
 
      */
     public static int countWords(String str){
@@ -139,11 +142,28 @@ Test data 1:
 String str = “   I   am      learning     Java      ”;
 Expected output 1:
 I am learning Java
+
+
      */
+    // public static String removeExtraSpaces(String str6){
+  //    return str6 = str6.replaceAll("\\s+", " ").trim();
+  //}
+
 
     public static String removeExtraSpaces(String str6){
-        return str6 = str6.replaceAll("\\s+", " ").trim();
+        String newStr = "";
+        char[] charArr = str6.toCharArray();//[' ' ',' I   am      learning     Java      ]
+
+        for (int i = 0; i< charArr.length; i++) {
+            if(charArr[i]!= ' ') newStr += charArr[i];
+            else if (i != charArr.length -1 && charArr[i + 1] != ' ') newStr += charArr[i];
+
+
+        }
+        return newStr.trim();
+
     }
+
     //-------------------------Task7----------------------
     /*
 Write a method add() that takes 2 int[] arrays as arguments and returns a new array with sum of given arrays elements.
@@ -193,3 +213,5 @@ Expected output 1:
         return absDifference;
     }
 }
+
+
