@@ -1,5 +1,7 @@
 package first_package;
 
+import singleton.Student;
+
 public class HelloWorld {
     public static void main(String[] args) {
 
@@ -19,6 +21,8 @@ public class HelloWorld {
 
 
         //Code
+        Student student = Student.getStudent();
+        System.out.println(student);
 
 
 
