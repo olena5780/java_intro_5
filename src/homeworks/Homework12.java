@@ -4,7 +4,7 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Homework12 {
-  public static void main(String[] args) {
+    public static void main(String[] args) {
         System.out.println("\n-----------Task1------------");
         String str1 = "123Tech456Global149";
         System.out.println(noDigit(str1));
@@ -23,7 +23,7 @@ public class Homework12 {
         int[] arr6 = {13, 2, 3};
         System.out.println(Arrays.toString(no13(arr6)));
         System.out.println("\n-----------Task7------------");
-        int[]arr7 = {120, 1, 720};
+        int[] arr7 = {120, 1, 720};
         System.out.println(Arrays.toString(arrFactorial(arr7)));
         System.out.println("\n-----------Task8------------");
         String str8 = "12ab$%3c%";
@@ -87,7 +87,6 @@ Expected Result 5: “TchGlbl”
      */
 
 
-
     /////////////////////Task2///////////////////
     public static String noVowel(String str2) {
         return str2.replaceAll("[aouieAOUEI]", "");
@@ -116,7 +115,8 @@ Expected Result 4: 8
         for (int i = 0; i < str3.length(); i++) {
             char c = str3.charAt(i);
             if (Character.isDigit(c)) {
-                sum += Integer.parseInt(String.valueOf(c));
+                //sum += Integer.parseInt(String.valueOf(c));
+                sum += Character.getNumericValue(c);
             }
         }
         return sum;
@@ -144,8 +144,6 @@ Expected Result 3: true
         }
         return hasUpperCase;
     }
-
-
     /*
     Requirement:
 -Create a method called middleInt()
@@ -157,10 +155,10 @@ Expected Result 4: 10
      */
 
     /////////////////////Task5///////////////////
-    public static int middleInt(int n1, int n2, int n3){
-        Integer[]numbers = {n1, n2, n3};
+    public static int middleInt(int n1, int n2, int n3) {
+        int[] numbers = {n1, n2, n3};
         Arrays.sort(numbers);
-        return numbers[numbers.length/2];
+        return numbers[numbers.length / 2];
 
     }
 
@@ -176,15 +174,14 @@ Expected Result 2: [0, 2, 3 ]
 
      */
 
-
     /////////////////////Task6///////////////////
 
-    public static int[]no13(int[]arr6){
+    public static int[] no13(int[] arr6) {
 
         for (int i = 0; i < arr6.length; i++) {
             if (arr6[i] == 13)
                 arr6[i] = 0;
-            }
+        }
 
         return arr6;
     }
@@ -214,13 +211,12 @@ Expected Result 4: []
      */
 
 
-
     /////////////////////Task7///////////////////
-    public static int[]arrFactorial(int []arr7){
+    public static int[] arrFactorial(int[] arr7) {
         int[] numbers2 = new int[arr7.length];
-        int f;
+
         for (int i = 0; i < arr7.length; i++) {
-            f = 1;
+            int f = 1;
             for (int j = 1; j <= arr7[i]; j++) {
                 f = f * j;
             }
@@ -253,27 +249,35 @@ Expected Result 3: [abc, 123, $%%]
 
     /////////////////////Task8///////////////////
 
-    public static String[]categorizeCharacters(String str8){
-        String[] arr8= {"", "", ""};
 
-        for (int i = 0; i < str8.length(); i++) {
-            char c = str8.charAt(i);
-            if(Character.isLetter(c))
-                arr8[0]+=c;
-           else if (Character.isDigit(c))
-                arr8[1] += c;
-                else arr8[2]+=c;
+    /*
+       public static String[]categorizeCharacters(String str8){
+           String[] arr8= {"", "", ""};
+
+           for (int i = 0; i < str8.length(); i++) {
+               char c = str8.charAt(i);
+               if(Character.isLetter(c))
+                   arr8[0]+=c;
+              else if (Character.isDigit(c))
+                   arr8[1] += c;
+                   else arr8[2]+=c;
 
 
-        }
-        return arr8;
+           }
+           return arr8;
+           }
 
+
+     */
+    public static String[] categorizeCharacters(String str) { // str = 123abcABC#$%
+        return new String[]{
+                str.replaceAll("[^a-zA-Z]", ""),//abcABC
+                str.replaceAll("[^0-9]", ""),//123
+                str.replaceAll("[A-Za-z0-9 ]", "")//#$%
+        };
 
 
     }
 
 
 }
-
-
-
