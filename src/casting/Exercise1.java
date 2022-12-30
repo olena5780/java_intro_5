@@ -12,5 +12,9 @@ public class Exercise1 {
         System.out.println(num1 / (double) num2 ); // 5 /  2.0 = 2.5
 
 
+
+
+
+
     }
 }
