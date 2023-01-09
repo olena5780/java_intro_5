@@ -143,8 +143,7 @@ Expected Result 2: “1a2bb2cc1a”
     public static String countSequenceOfCharacters(String str5){ //
         int count = 1;
         String newStr = "";
-        if(str5.length() == 0 ) return "";
-        else {
+
             for (int i = 0; i < str5.length()-1; i++) {
                 if(str5.charAt(i) == str5.charAt(i+1)) {
                     count++;
@@ -155,7 +154,7 @@ Expected Result 2: “1a2bb2cc1a”
                 }if(i == str5.length()-2) newStr += String.valueOf(count) + str5.charAt(i+1);
 
             }
-        }
+        
         return newStr;
 
 
