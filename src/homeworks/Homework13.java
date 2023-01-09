@@ -29,8 +29,9 @@ public class Homework13 {
         System.out.println(Arrays.deepToString(numberAndSquare(arr3c)));
 
         System.out.println("\n---------------Task4------------");
-        String[] array = {"abc", "foo", "java"};
-        System.out.println(containsValue(array, "Java"));
+        System.out.println(containsValue(new String[]{"abc", "foo", "java"}, "Java"));
+        System.out.println(containsValue(new String[]{"abc", "foo", "Java"}, "Java"));
+        System.out.println(containsValue(new String[]{"abc", "foo", "ava"}, "Java"));
 
         System.out.println("\n---------------Task5------------");
         System.out.println(reverseSentence(""));
@@ -44,12 +45,12 @@ public class Homework13 {
 
 
         System.out.println("\n---------------Task7------------");
-        String[]arr7 ={"Selenium", "123$%", "###"};
+        String[]arr7 ={"Selen ium", "123$%", "###"};
         System.out.println(Arrays.toString(removeArraySpecialsDigits(arr7)));
 
         System.out.println("\n---------------Task8------------");
         System.out.println(removeAndReturnCommons
-                (new ArrayList<>(Arrays.asList("Java", "is", "fun")), new ArrayList<>(Arrays.asList("Java", "C#", "Python"))));
+                (new ArrayList<>(Arrays.asList("Java", "is", "fun")), new ArrayList<>(Arrays.asList("Java", "Java", "C#", "Python"))));
 
 
         System.out.println("\n---------------Task9------------");
@@ -139,6 +140,7 @@ Hint: Use binarySearch() for easy solution
         }
          return false;
     }
+
     //---------------Task5------------
     /*
     Requirement:
@@ -149,17 +151,16 @@ Hint: Use split() for easy solution
 Note: Make the new first word’s first letter upper case and make the old first word’s first letter lower case
 
      */
-    public static String reverseSentence(String str5){
-        String[]str = str5.split(" ");
-        ArrayList<String> list = new ArrayList<>();
-      if(str.length <= 1) return "There is not enough words!";
-      else
-          for (int i = str.length-1; i >= 0  ; i--) {
-              list.add(str[i]);
+    public static String reverseSentence(String str){
+        String reversedSent = "";
+        String[] arr = str.toLowerCase().split(" ");
+        if(arr.length < 2) return "There is not enough words!";
+        for (int i = arr.length-1; i >= 0; i--) {
+            reversedSent += arr[i] + " ";
+        }
+        return reversedSent.substring(0,1).toUpperCase() + reversedSent.substring(1, reversedSent.length()-1);
+    }
 
-          }
-          return list.toString().substring(0,2).toUpperCase() + list.toString().substring(2).toLowerCase() ;
-      }
 
     //---------------Task6------------
     /*
@@ -186,6 +187,22 @@ Expected Result 1: [“Java”, “is”, “fun”]
 
      */
     public static String[]removeArraySpecialsDigits(String[]arr7){
+        /*String[] answer = new String [arr7.length];
+
+        for (int i = 0; i < arr7.length; i++) {
+            String str = "";
+            for (int j = 0; j < arr7[i].length(); j++) {
+                if(Character.isLetter(arr7[i].charAt(j)) || Character.isWhitespace(arr7[i].charAt(j)))
+                    str += arr7[i].charAt(j);
+            }
+            answer[i] = str;
+        }
+        return answer;
+
+
+    }
+
+         */
         ArrayList<String> list = new ArrayList<>();
         for (String s : arr7) {
             s = s.replaceAll("[^A-Za-z]", "");
@@ -193,6 +210,8 @@ Expected Result 1: [“Java”, “is”, “fun”]
         }
         return list.toArray(new String[0]);
     }
+
+
     //---------------Task8------------
     /*
 
@@ -207,23 +226,16 @@ Expected Result 1: []
  */
     public static ArrayList<String> removeAndReturnCommons(ArrayList<String> list1, ArrayList<String> list2) {
         ArrayList<String> list = new ArrayList<>();
-
-        if (list1.size() > list2.size()) {
-            for (String s : list1) {
+        for (String s : list1) {
                 for (String c : list2) {
-                    if(s.equals(c))
+                    if (s.equals(c) && !list.contains(s))
                         list.add(c);
                 }
             }
-        }else
-            for (String c : list2) {
-                for (String s : list1) {
-                    if(c.equals(s))
-                        list.add(s);
-                }
-            }
+
             return list;
-    }
+        }
+
 
     //---------------Task9------------
     /*
