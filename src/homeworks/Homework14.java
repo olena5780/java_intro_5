@@ -72,9 +72,9 @@ Expected Result 5: FizzBuzz
      */
     public static String fizzBuzz2(int num2){
         if(num2 % 3 == 0 && num2 % 5 == 0) return("FizzBuzz");
-        else if(num2 % 3 == 0) return("Fizz");
-        else if(num2 % 5 == 0) return("Buzz");
-        else return num2 + "";
+        if(num2 % 3 == 0) return("Fizz");
+        if(num2 % 5 == 0) return("Buzz");
+        return num2 + "";
 
     }
     //--------------Task-3-----------------
@@ -102,6 +102,21 @@ Expected Result 3: 155
         }
         return sum;
     }
+    /*
+    int num = 0;
+int sum = 0;
+
+for (int i = 0; i < str.length(); i++) {
+    if(Character.isDigit(str.charAt(i)))
+        num += num * 10 + str.charAt(i) - '0';
+    else {
+        sum += num;
+        num = 0;
+    }
+}
+
+return sum+num;
+     */
     //--------------Task-4-----------------
     /*
     -Create a method called findBiggestNumber()
@@ -125,6 +140,27 @@ Expected Result 3: 155
         return biggestNum;
 
     }
+    /*
+    if(str.isEmpty()) return 0;
+int max = Integer.MIN_VALUE;
+String[] arr = str.split("[^0-9-]");
+for (String s : arr) {
+    if(!s.isEmpty()){
+        if(s.startsWith("-")){
+            String[] arr1 = s.split("-");
+            for (String s1 : arr1) {
+                if(!s1.isEmpty()) {
+                    int number = Integer.parseInt(s1) - Integer.parseInt(s1) - Integer.parseInt(s1);
+                    max = Math.max(max, number);
+                }
+            }
+        }else if(!s.contains("-")) max = Math.max(max, Integer.parseInt(s));
+        else max = Math.max(max, Integer.parseInt(s.substring(0,s.indexOf("-"))));
+    }
+}
+return max;
+
+     */
 
 
     //--------------Task-5-----------------
@@ -143,8 +179,7 @@ Expected Result 2: “1a2bb2cc1a”
     public static String countSequenceOfCharacters(String str5){ //
         int count = 1;
         String newStr = "";
-        if(str5.length() == 0 ) return "";
-        else {
+
             for (int i = 0; i < str5.length()-1; i++) {
                 if(str5.charAt(i) == str5.charAt(i+1)) {
                     count++;
@@ -155,7 +190,7 @@ Expected Result 2: “1a2bb2cc1a”
                 }if(i == str5.length()-2) newStr += String.valueOf(count) + str5.charAt(i+1);
 
             }
-        }
+        
         return newStr;
 
 
